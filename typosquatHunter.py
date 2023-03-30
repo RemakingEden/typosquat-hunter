@@ -4,37 +4,47 @@ import requests
 import json
 import jellyfish
 import sys
+import logging
 
-app_dir = "/app"
+app_dir = "/tmp"
 levenshtein_number = 1
 PyPi_list_url = "https://raw.githubusercontent.com/vincepower/python-pypi-package-list/main/pypi-packages.json"
+logger = logging.getLogger()
 
 
 def get_requirements(filename):
     packages = []
-    with open(filename) as f:
-        for line in f:
-            line = line.strip()
-            if line.startswith("#") or line == "":
-                continue
-            package = (
-                line.split(" ", 1)[0]
-                .split(",", 1)[0]
-                .split("==", 1)[0]
-                .split(">=", 1)[0]
-            )
-            packages.append(package)
+    try:
+        with open(filename) as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith("#") or line == "":
+                    continue
+                package = (
+                    line.split(" ", 1)[0]
+                    .split(",", 1)[0]
+                    .split("==", 1)[0]
+                    .split(">=", 1)[0]
+                )
+                packages.append(package)
+    except FileNotFoundError:
+        logger.error(f"File {filename} not found, please ensure you have the application's requirements.txt in the app_dir")
+        packages = []
+        sys.exit(1)
     return packages
-
 
 def get_whitelist(filename):
     whitelist = set()
-    with open(filename) as f:
-        for line in f:
-            line = line.strip()
-            if line.startswith("#") or line == "":
-                continue
-            whitelist.add(line)
+    try:
+        with open(filename) as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith("#") or line == "":
+                    continue
+                whitelist.add(line)
+    except FileNotFoundError:
+        logger.error(f"No whitelist has been found, all packages will be checked")
+        whitelist = set()
     return whitelist
 
 
@@ -86,7 +96,8 @@ def compare_downloads(package, similar_packages):
 def main():
     print("Parsing requirements")
     requirements = get_requirements(f"{app_dir}/requirements.txt")
-    whitelist = get_whitelist(f"{app_dir}/typohunterwhitelist.txt")
+    print("Parsing whitelist")
+    whitelist = get_whitelist(f"{app_dir}/typosquathunterwhitelist.txt")
     print("Getting all packages")
     packages = get_packages()
     warn_packages = {}
