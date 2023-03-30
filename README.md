@@ -45,7 +45,17 @@ Run the script
 
 If you would like to ignore a package as false positive you can add this package to a whitelist called `typosquathunterwhitelist.txt` in the app folder
 
-## Reason for creation
+## Run in CI/Docker
+
+Run the container with the app you want to analyse as a volume
+
+```bash
+docker run -v /absolute/path/to/your/local/app:/app ghcr.io/remakingeden/typosquat-hunter:latest
+```
+
+This should run in a similar way in most CI services. Simply checkout the repo you want to analyse and then connect it as a volume as above.
+
+## Reason For Creation
 
 I have been hearing more and more about attacks from typosquatting packages and it surprised me when I tried looking for a solution that could spot these in CI. I thought there could be enough data provided to spot some if not most typosquatting packages. If you'd like to know more about the ways typosquatting can be used to attack projects check out the below articles.
 

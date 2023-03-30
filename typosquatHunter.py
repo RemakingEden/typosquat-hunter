@@ -6,7 +6,7 @@ import jellyfish
 import sys
 import logging
 
-app_dir = "/tmp"
+app_dir = "/app"
 levenshtein_number = 1
 PyPi_list_url = "https://raw.githubusercontent.com/vincepower/python-pypi-package-list/main/pypi-packages.json"
 logger = logging.getLogger()
