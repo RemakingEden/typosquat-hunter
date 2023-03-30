@@ -4,13 +4,11 @@ Typosquat Hunter is a Python app that helps you find typosquatting in packages d
 
 ## Roadmap
 
-- [x] Proof of concept
-    This is a proof this can work and if anyone wants it. I have built the app really scrappy but just enough so it works. It only works with PyPi and is taking in very few data points to decide if a package is a typosquatter or not. I think in its current state it would be frustrating the amount of false positives that could arise especially if using a more niche package.
+- [x] Proof of concept- This is a proof this can work and if anyone wants it. I have built the app really scrappy but just enough so it works. It only works with PyPi and is taking in very few data points to decide if a package is a typosquatter or not. I think in its current state it would be frustrating the amount of false positives that could arise especially if using a more niche package.
 
-- [ ] Minimum Viable Product
-    If people found TypoSquat Hunter useful I would rebuild the app from scratch perhaps in a more performant language. I would try to build it in a modular way so we can add new libraries and packaging systems as we go. I would also like to take in more data points from the packages such as date of upload to more accurately predict malicious packages.
+- [ ] Minimum Viable Product - If people found TypoSquat Hunter useful I would rebuild the app from scratch perhaps in a more performant language. I would try to build it in a modular way so we can add new libraries and packaging systems as we go. I would also like to take in more data points from the packages such as date of upload to more accurately predict malicious packages.
 
-... Onwards
+... To be continued
 
 
 ## Run Locally
