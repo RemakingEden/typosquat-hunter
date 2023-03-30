@@ -2,6 +2,8 @@
 
 Typosquat Hunter is a Python app that helps you find typosquatting in packages during CI. Typosquatting is a malicious practice of registering names that are similar to existing ones, such as `requets` instead of `requests`, in order to trick users into installing them. Typosquat Hunter compares the packages in your dependencies and flags if it thinks any may be suspicious.
 
+![image](https://user-images.githubusercontent.com/12913562/228901391-46d8638f-ec42-4099-a189-01203362dfbc.png)
+
 ## Roadmap
 
 - [x] Proof of concept- This is a proof this can work and if anyone wants it. I have built the app really scrappy but just enough so it works. It only works with PyPi and is taking in very few data points to decide if a package is a typosquatter or not. I think in its current state it would be frustrating the amount of false positives that could arise especially if using a more niche package.
